@@ -121,7 +121,7 @@ namespace KeystrokeDynamics
                 default:
                     break;
             }
-            if (counter == 7)
+            if (counter == 6)
             {
                 LogStream();
                 Form1 form1 = new Form1();
