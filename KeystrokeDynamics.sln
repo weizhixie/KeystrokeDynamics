@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2042
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeystrokeDynamics", "KeystrokeDynamics\KeystrokeDynamics.csproj", "{7153358E-A2B3-406C-924D-E0F2DD8C619D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7153358E-A2B3-406C-924D-E0F2DD8C619D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7153358E-A2B3-406C-924D-E0F2DD8C619D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7153358E-A2B3-406C-924D-E0F2DD8C619D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7153358E-A2B3-406C-924D-E0F2DD8C619D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2CCA200E-F170-467E-95FD-9A86A8FA9C46}
+	EndGlobalSection
+EndGlobal
