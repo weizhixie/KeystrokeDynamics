@@ -115,7 +115,7 @@ namespace KeystrokeDynamics
                 //if (((Keys)vkCode).ToString() != "LShiftKey")
                 //{
                 StreamWriter write = new StreamWriter(Application.StartupPath + @"\log.txt", true);
-                write.Write(sw.Elapsed + ": " + LocalTime() + Environment.NewLine);
+                write.Write("Elapsed_time_" + sw.Elapsed + ": " + LocalTime() + Environment.NewLine);
                 write.Close();
                 //}
             }
