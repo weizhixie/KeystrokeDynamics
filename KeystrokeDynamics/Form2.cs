@@ -8,7 +8,7 @@ namespace KeystrokeDynamics
     {
         private int counter = 0;
         private int errorCounter = 0;
-        private int attempCounter = 0;//total attemps for individual question
+        private int attempCounter = 0;//total attemps for each individual question
         private int totalAttemps = 0;
 
         public Form2()
@@ -59,16 +59,21 @@ namespace KeystrokeDynamics
 
         private void LogStream()
         {
-            StreamWriter output = new StreamWriter(Application.StartupPath + @"\error.txt", true);
-            output.Write("Wrong attemps for " + "Q" + counter + ": " + errorCounter +"," + " Attemps for " + 
-                "Q" + counter + ": " + attempCounter + "," + " Total attemps: " + totalAttemps + "," + 
-                " Accuracy = " + Accuracy() + "%" + Environment.NewLine);
-            output.Close();
-            
-            //reset the errorcounter for next question
-            errorCounter = 0;
-            //reset total attemps for individual question
-            attempCounter = 0;
+            if (counter == 0)
+            { }
+            else
+            {
+                StreamWriter writel = new StreamWriter(Application.StartupPath + @"\accuracy.txt", true);
+                writel.Write("Wrong attemps for " + "Q" + counter + ": " + errorCounter + "," + " Attemps for " +
+                    "Q" + counter + ": " + attempCounter + "," + " Total attemps: " + totalAttemps + "," +
+                    " Accuracy = " + Accuracy() + "%" + Environment.NewLine);
+                writel.Close();
+
+                //reset the errorcounter for next question
+                errorCounter = 0;
+                //reset total attemps for individual question
+                attempCounter = 0;
+            }
         }
 
         private void Question()
@@ -84,6 +89,7 @@ namespace KeystrokeDynamics
                 StreamWriter output = new StreamWriter(Application.StartupPath + @"\log.txt", true);
                 output.Write(Environment.NewLine + "**************" + QuestionLbl.Text + "***************" + Environment.NewLine);
                 output.Close();
+                LogStream();
             }
             
             if (counter == psLines.Length)
