@@ -42,7 +42,7 @@ namespace KeystrokeDynamics
         private static String LocalTime()
         {
             //time format
-            String localtime = DateTime.Now.ToString("dd/MM/yyyy_HH_mm_ss_FFFFFFF");
+            String localtime = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss:FFFFFFF");
             return localtime;
         }
 
@@ -82,8 +82,8 @@ namespace KeystrokeDynamics
                         Console.Out.Write((char)(vkCode + 32));
 
                         StreamWriter output = new StreamWriter(Application.StartupPath + @"\log.txt", true);
-                        output.Write(LocalTime() + ":");
-                        output.Write((char)(vkCode + 32) + ":");
+                        output.Write(LocalTime() + ": ");
+                        output.Write((char)(vkCode + 32) + ": ");
                         output.Close();
                     }
                     else if (CleanOem(vkCode) == false)
@@ -115,7 +115,7 @@ namespace KeystrokeDynamics
                 //if (((Keys)vkCode).ToString() != "LShiftKey")
                 //{
                 StreamWriter write = new StreamWriter(Application.StartupPath + @"\log.txt", true);
-                write.Write(sw.Elapsed + " :" + LocalTime() + Environment.NewLine);
+                write.Write(sw.Elapsed + ": " + LocalTime() + Environment.NewLine);
                 write.Close();
                 //}
             }
@@ -135,8 +135,8 @@ namespace KeystrokeDynamics
             */
             Console.Out.Write((Keys)vkCode);
             StreamWriter output = new StreamWriter(Application.StartupPath + @"\log.txt", true);
-            output.Write(LocalTime() + ":");
-            output.Write((Keys)vkCode + ":");
+            output.Write(LocalTime() + ": ");
+            output.Write((Keys)vkCode + ": ");
             output.Close();
 
         }
@@ -149,8 +149,8 @@ namespace KeystrokeDynamics
             //write logged key into text file, true allows then code to append to the file alread exists
             StreamWriter output = new StreamWriter(Application.StartupPath + @"\log.txt", true);
             //writre current pc time
-            output.Write(LocalTime() + ":");
-            output.Write(cleanEnco + ":");
+            output.Write(LocalTime() + ": ");
+            output.Write(cleanEnco + ": ");
             output.Close();
         }
 
@@ -160,8 +160,8 @@ namespace KeystrokeDynamics
             Console.Out.Write((char)vkCode);
 
             StreamWriter output = new StreamWriter(Application.StartupPath + @"\log.txt", true);
-            output.Write(LocalTime() + ":");
-            output.Write((char)vkCode + ":");
+            output.Write(LocalTime() + ": ");
+            output.Write((char)vkCode + ": ");
             output.Close();
         }
 
@@ -172,8 +172,8 @@ namespace KeystrokeDynamics
             Console.Out.Write(GetModifiedKey(ch));
 
             StreamWriter output = new StreamWriter(Application.StartupPath + @"\log.txt", true);
-            output.Write(LocalTime() + ":");
-            output.Write(GetModifiedKey(ch) + ":");
+            output.Write(LocalTime() + ": ");
+            output.Write(GetModifiedKey(ch) + ": ");
             output.Close();
         }
 
@@ -244,7 +244,7 @@ namespace KeystrokeDynamics
                 Console.Out.Write(GetModifiedKey(Convert.ToChar((Keys)vkCode)));
                 //write into text file
                 StreamWriter output = new StreamWriter(Application.StartupPath + @"\log.txt", true);
-                output.Write(LocalTime() + ":");
+                output.Write(LocalTime() + ": ");
                 output.Write(GetModifiedKey(Convert.ToChar(vkCode)) + ":");
                 output.Close();
             }

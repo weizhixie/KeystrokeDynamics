@@ -23,6 +23,7 @@ namespace KeystrokeDynamics
 
         private void NextBtn_Click(object sender, EventArgs e)
         {
+            //check if the input is correct
             if (InputTextBox.Text == QuestionLbl.Text)
             {
                 InputTextBox.Text = "";
@@ -72,56 +73,20 @@ namespace KeystrokeDynamics
 
         private void Question()
         {
-            QNumlbl.Text = "Q." + Convert.ToString(counter+1);
-            switch (counter)
+            //read all text from file and store it in a string array
+            string[] psLines = File.ReadAllLines(Application.StartupPath + @"\password.txt");
+            QNumlbl.Text = "Q." + Convert.ToString(counter + 1);
+
+            if(counter <= psLines.Length-1)
             {
-                /*case 1:
-                    QuestionLbl.Text = "Should we start class now,";
-                    break;
-                case 2:
-                    QuestionLbl.Text = "I'll be able to travel to?";
-                    break;
-                case 3:
-                    QuestionLbl.Text = "listening music";
-                    break;
-                case 4:
-                    QuestionLbl.Text = "Should we start class now,";
-                    break;
-                case 5:
-                    QuestionLbl.Text = "institution";
-                    break;
-                case 6:
-                    QuestionLbl.Text = "He ran out of money, so he had to stop playing poker.";
-                    break;
-                default:
-                    break;*/
-                case 0:
-                    QuestionLbl.Text = Convert.ToString(counter);
-                    break;
-                case 1:
-                    QuestionLbl.Text = Convert.ToString(counter);
-                    LogStream();
-                    break;
-                case 2:
-                    QuestionLbl.Text = Convert.ToString(counter);
-                    LogStream();
-                    break;
-                case 3:
-                    QuestionLbl.Text = Convert.ToString(counter);
-                    LogStream();
-                    break;
-                case 4:
-                    QuestionLbl.Text = Convert.ToString(counter);
-                    LogStream();
-                    break;
-                case 5:
-                    QuestionLbl.Text = Convert.ToString(counter);
-                    LogStream();
-                    break;
-                default:
-                    break;
+                //dispaly text
+                QuestionLbl.Text = psLines[counter];
+                StreamWriter output = new StreamWriter(Application.StartupPath + @"\log.txt", true);
+                output.Write(Environment.NewLine + "**************" + QuestionLbl.Text + "***************" + Environment.NewLine);
+                output.Close();
             }
-            if (counter == 6)
+            
+            if (counter == psLines.Length)
             {
                 LogStream();
                 Form1 form1 = new Form1();
