@@ -19,6 +19,7 @@ namespace KeystrokeDynamics
         private void Form2_Load(object sender, EventArgs e)
         {
             Question();
+            InputTextBox.Select();
         }
 
         private void NextBtn_Click(object sender, EventArgs e)
@@ -35,6 +36,7 @@ namespace KeystrokeDynamics
             else
             {
                 CentreForm("Incorrect, write again");
+                InputTextBox.Clear();
                 totalAttemps += 1;
                 attempCounter += 1;
                 errorCounter += 1;
@@ -80,13 +82,13 @@ namespace KeystrokeDynamics
         {
             //read all text from file and store it in a string array
             string[] psLines = File.ReadAllLines(Application.StartupPath + @"\password.txt");
-            QNumlbl.Text = "Q." + Convert.ToString(counter + 1);
+            QNumlbl.Text = "Password Number: " + Convert.ToString(counter + 1);
 
             if(counter <= psLines.Length-1)
             {
                 //dispaly text
                 QuestionLbl.Text = psLines[counter];
-                StreamWriter output = new StreamWriter(Application.StartupPath + @"\log.txt", true);
+                StreamWriter output = new StreamWriter(Application.StartupPath + @"\timings.txt", true);
                 output.Write(Environment.NewLine + "**************" + QuestionLbl.Text + "***************" + Environment.NewLine);
                 output.Close();
                 LogStream();
@@ -98,7 +100,7 @@ namespace KeystrokeDynamics
                 Form1 form1 = new Form1();
                 form1.Show();
                 this.Hide();
-                CentreForm("Thank you for your cooperation and support");
+                CentreForm("Finished. \nPlease remember to send accuracy.txt and timings.txt \nto s.parkinson@hud.ac.uk");
             }
             counter += 1;
         }
@@ -121,5 +123,9 @@ namespace KeystrokeDynamics
             Application.Exit();
         }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

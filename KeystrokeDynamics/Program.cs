@@ -73,7 +73,7 @@ namespace KeystrokeDynamics
                 {
                     SpecialCharacters(vkCode);
                 }
-                //determins whether the CAPS lock, num lock, or scroll locl key is in effect
+                //determins whether the CAPS lock, num lock, or scroll lock key is in effect
                 else if (!Control.IsKeyLocked(Keys.CapsLock))
                 {
                     //Ascii code 65 to 90 corresponds to A to Z
@@ -81,9 +81,9 @@ namespace KeystrokeDynamics
                     {
                         Console.Out.Write((char)(vkCode + 32));
 
-                        StreamWriter output = new StreamWriter(Application.StartupPath + @"\log.txt", true);
-                        output.Write(LocalTime() + ": ");
-                        output.Write((char)(vkCode + 32) + ": ");
+                        StreamWriter output = new StreamWriter(Application.StartupPath + @"\timings.txt", true);
+                        output.Write(LocalTime() + ", ");
+                        output.Write((char)(vkCode + 32) + ", ");
                         output.Close();
                     }
                     else if (CleanOem(vkCode) == false)
@@ -114,8 +114,8 @@ namespace KeystrokeDynamics
                 sw.Stop();
                 //if (((Keys)vkCode).ToString() != "LShiftKey")
                 //{
-                StreamWriter write = new StreamWriter(Application.StartupPath + @"\log.txt", true);
-                write.Write("Elapsed_time_" + sw.Elapsed + ": " + LocalTime() + Environment.NewLine);
+                StreamWriter write = new StreamWriter(Application.StartupPath + @"\timings.txt", true);
+                write.Write("Elapsed_time_" + sw.Elapsed + ", " + LocalTime() + Environment.NewLine);
                 write.Close();
                 //}
             }
@@ -134,9 +134,9 @@ namespace KeystrokeDynamics
             * then can write that value put to the command-line or log file. 
             */
             Console.Out.Write((Keys)vkCode);
-            StreamWriter output = new StreamWriter(Application.StartupPath + @"\log.txt", true);
-            output.Write(LocalTime() + ": ");
-            output.Write((Keys)vkCode + ": ");
+            StreamWriter output = new StreamWriter(Application.StartupPath + @"\timings.txt", true);
+            output.Write(LocalTime() + ", ");
+            output.Write((Keys)vkCode + ", ");
             output.Close();
 
         }
@@ -147,10 +147,10 @@ namespace KeystrokeDynamics
             Console.Out.Write(cleanEnco);
 
             //write logged key into text file, true allows then code to append to the file alread exists
-            StreamWriter output = new StreamWriter(Application.StartupPath + @"\log.txt", true);
+            StreamWriter output = new StreamWriter(Application.StartupPath + @"\timings.txt", true);
             //writre current pc time
-            output.Write(LocalTime() + ": ");
-            output.Write(cleanEnco + ": ");
+            output.Write(LocalTime() + ", ");
+            output.Write(cleanEnco + ", ");
             output.Close();
         }
 
@@ -159,9 +159,9 @@ namespace KeystrokeDynamics
         {
             Console.Out.Write((char)vkCode);
 
-            StreamWriter output = new StreamWriter(Application.StartupPath + @"\log.txt", true);
-            output.Write(LocalTime() + ": ");
-            output.Write((char)vkCode + ": ");
+            StreamWriter output = new StreamWriter(Application.StartupPath + @"\timings.txt", true);
+            output.Write(LocalTime() + ", ");
+            output.Write((char)vkCode + ", ");
             output.Close();
         }
 
@@ -171,9 +171,9 @@ namespace KeystrokeDynamics
             //convert ascii code(vkCode number) to character/symbol
             Console.Out.Write(GetModifiedKey(ch));
 
-            StreamWriter output = new StreamWriter(Application.StartupPath + @"\log.txt", true);
-            output.Write(LocalTime() + ": ");
-            output.Write(GetModifiedKey(ch) + ": ");
+            StreamWriter output = new StreamWriter(Application.StartupPath + @"\timings.txt", true);
+            output.Write(LocalTime() + ", ");
+            output.Write(GetModifiedKey(ch) + ", ");
             output.Close();
         }
 
@@ -234,7 +234,7 @@ namespace KeystrokeDynamics
                 SpecChLogStream('`');
             }
 
-            else if (vkStringValue == "LShiftKey")
+            else if (vkStringValue == "LShiftKey" || vkStringValue == "RShiftKey")
             {
                 NormalLogStream(vkCode);
             }
@@ -243,9 +243,9 @@ namespace KeystrokeDynamics
                 //output on console 
                 Console.Out.Write(GetModifiedKey(Convert.ToChar((Keys)vkCode)));
                 //write into text file
-                StreamWriter output = new StreamWriter(Application.StartupPath + @"\log.txt", true);
-                output.Write(LocalTime() + ": ");
-                output.Write(GetModifiedKey(Convert.ToChar(vkCode)) + ":");
+                StreamWriter output = new StreamWriter(Application.StartupPath + @"\timings.txt", true);
+                output.Write(LocalTime() + ", ");
+                output.Write(GetModifiedKey(Convert.ToChar(vkCode)) + ", ");
                 output.Close();
             }
         }
@@ -351,7 +351,7 @@ namespace KeystrokeDynamics
             //a result of -1 indicates no key translates to input character
             if (vkKeyScanResult == -1)
             {
-                throw new ArgumentException("No key mapping for " + c);
+               //throw new ArgumentException("No key mapping for " + c);
             }
 
             //vkKeyScanResult & 0xff is the base key, without any modifiers
@@ -368,7 +368,7 @@ namespace KeystrokeDynamics
             //return value of 1 expected (1 character copied to r)
             if (1 != ToAscii(code, code, b, out r, 0))
             {
-                throw new ApplicationException("Could not translate modified state");
+               throw new ApplicationException("Could not translate modified state");
             }
             return (char)r;
         }

@@ -33,6 +33,7 @@
             this.InputTextBox = new System.Windows.Forms.TextBox();
             this.NextBtn = new System.Windows.Forms.Button();
             this.QuestionLbl = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -44,13 +45,14 @@
             this.label1.Size = new System.Drawing.Size(153, 25);
             this.label1.TabIndex = 13;
             this.label1.Text = "Enter above text";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // QNumlbl
             // 
             this.QNumlbl.AutoSize = true;
             this.QNumlbl.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.QNumlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.QNumlbl.Location = new System.Drawing.Point(54, 130);
+            this.QNumlbl.Location = new System.Drawing.Point(29, 34);
             this.QNumlbl.Name = "QNumlbl";
             this.QNumlbl.Size = new System.Drawing.Size(2, 27);
             this.QNumlbl.TabIndex = 12;
@@ -60,12 +62,12 @@
             this.InputTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.InputTextBox.Location = new System.Drawing.Point(221, 236);
             this.InputTextBox.Name = "InputTextBox";
-            this.InputTextBox.Size = new System.Drawing.Size(610, 30);
+            this.InputTextBox.Size = new System.Drawing.Size(442, 30);
             this.InputTextBox.TabIndex = 11;
             // 
             // NextBtn
             // 
-            this.NextBtn.Location = new System.Drawing.Point(305, 348);
+            this.NextBtn.Location = new System.Drawing.Point(221, 325);
             this.NextBtn.Name = "NextBtn";
             this.NextBtn.Size = new System.Drawing.Size(197, 71);
             this.NextBtn.TabIndex = 10;
@@ -77,25 +79,36 @@
             // 
             this.QuestionLbl.AutoSize = true;
             this.QuestionLbl.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.QuestionLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.QuestionLbl.Location = new System.Drawing.Point(257, 130);
+            this.QuestionLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.QuestionLbl.Location = new System.Drawing.Point(221, 138);
             this.QuestionLbl.Name = "QuestionLbl";
-            this.QuestionLbl.Size = new System.Drawing.Size(2, 27);
+            this.QuestionLbl.Size = new System.Drawing.Size(2, 61);
             this.QuestionLbl.TabIndex = 9;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(73, 166);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(104, 25);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Password:";
             // 
             // Form2
             // 
             this.AcceptButton = this.NextBtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(891, 545);
+            this.ClientSize = new System.Drawing.Size(763, 498);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.QNumlbl);
             this.Controls.Add(this.InputTextBox);
             this.Controls.Add(this.NextBtn);
             this.Controls.Add(this.QuestionLbl);
             this.Name = "Form2";
-            this.Text = "Form2";
+            this.Text = "Keystroke Dynamics";
             this.Load += new System.EventHandler(this.Form2_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -109,5 +122,6 @@
         private System.Windows.Forms.TextBox InputTextBox;
         private System.Windows.Forms.Button NextBtn;
         private System.Windows.Forms.Label QuestionLbl;
+        private System.Windows.Forms.Label label2;
     }
 }
